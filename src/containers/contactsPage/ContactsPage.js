@@ -23,7 +23,6 @@ export const ContactsPage = ({contacts, addContact}) => {
       setName("");
       setPhone("");
       setEmail("");
-      console.log(contacts)
     }
   };
 
@@ -34,7 +33,7 @@ export const ContactsPage = ({contacts, addContact}) => {
 
   useEffect(() => {
     function isDuplicateName() {
-      const test = contacts.find(contact => contact.name = name);
+      const test = contacts.find(contact => contact.name === name);
       if (test !== undefined) {
         return true;
       }
@@ -45,7 +44,7 @@ export const ContactsPage = ({contacts, addContact}) => {
     } else {
       setDuplicate(false);
     }
-  }, [name, contacts, duplicate])
+  }, [name])
   
   return (
     <div>
