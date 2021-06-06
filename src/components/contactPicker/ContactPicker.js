@@ -9,6 +9,7 @@ export const ContactPicker = ({name, contacts, onChange}) => {
       name={name}
       onChange={onChange}
       defaultValue={""}
+      required
     >
       <option value={""} key="-1" disabled>
         No contact selected  
