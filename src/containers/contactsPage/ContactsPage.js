@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ContactForm } from "../../components/contactForm/ContactForm";
+import { TileList } from "../../components/tileList/TileList";
 
 export const ContactsPage = ({contacts, addContact}) => {
   /*
@@ -10,10 +11,6 @@ export const ContactsPage = ({contacts, addContact}) => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [duplicate, setDuplicate] = useState("");
-
-
-  console.log(contacts);
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,6 +23,7 @@ export const ContactsPage = ({contacts, addContact}) => {
       setName("");
       setPhone("");
       setEmail("");
+      console.log(contacts)
     }
   };
 
@@ -52,20 +50,26 @@ export const ContactsPage = ({contacts, addContact}) => {
   return (
     <div>
       <section>
-        <h2>Add Contact</h2> 
+        <h2>
+          Add Contact
+          {duplicate ? " - Name already exists" : ""}
+        </h2> 
         <ContactForm
           name={name}
-          phone={phone}
-          email={email}
           setName={setName}
+          phone={phone}
           setPhone={setPhone}
+          email={email}
           setEmail={setEmail}
-          onSubmit={handleSubmit}
+          handleSubmit={handleSubmit}
         />
       </section>
       <hr />
       <section>
         <h2>Contacts</h2>
+        <TileList
+        objects={contacts}
+        />
       </section>
     </div>
   );
